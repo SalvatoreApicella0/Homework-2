@@ -1,0 +1,354 @@
+@base <http://www.semantictecnologies.org/aviation#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix aviation: <http://www.semantictecnologies.org/aviation#> .
+@prefix airline: <http://www.semantictecnologies.org/aviation#airline/> .
+@prefix airport: <http://www.semantictecnologies.org/aviation#airport/> .
+@prefix airplanes: <http://www.semantictecnologies.org/aviation#airplanes/> .
+@prefix routes: <http://www.semantictecnologies.org/aviation#routes/> .
+
+<#AirlineMapping>
+  rml:logicalSource [
+    rml:source "datasources/airlines.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://www.semantictecnologies.org/aviation/Airline_{Airline_ID}" ;
+    rr:class aviation:Airline 
+  ];
+  
+  rr:predicateObjectMap [ 
+    rr:predicate airline:ID ;
+    rr:objectMap [ 
+       rml:reference "Airline_ID";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:Name ;
+    rr:objectMap [ 
+       rml:reference "Name";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:Alias ;
+    rr:objectMap [ 
+       rml:reference "Alias";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:IATA ;
+    rr:objectMap [ 
+       rml:reference "IATA";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:ICAO ;
+    rr:objectMap [ 
+       rml:reference "ICAO";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:Callsign ;
+    rr:objectMap [ 
+       rml:reference "Callsign";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:Country ;
+    rr:objectMap [ 
+       rml:reference "Country";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airline:Active ;
+    rr:objectMap [ 
+       rml:reference "Active";
+       rr:datatype xsd:string
+    ]
+  ].
+
+<#AirplaneMapping>
+  rml:logicalSource [ 
+    rml:source "datasources/airplanes.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://www.semantictecnologies.org/aviation/Airplane_{Name}" ;
+    rr:class aviation:Airplane 
+  ];
+  
+  rr:predicateObjectMap [ 
+    rr:predicate airplanes:Name ;
+    rr:objectMap [ 
+       rml:reference "Name";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airplanes:IATA ;
+    rr:objectMap [ 
+       rml:reference "IATA_code";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airplanes:ICAO ;
+    rr:objectMap [ 
+       rml:reference "ICAO_code";
+       rr:datatype xsd:string
+    ]
+  ].
+
+<#AirportMapping>
+  rml:logicalSource [
+    rml:source "datasources/airports.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://www.semantictecnologies.org/aviation/Airport_{Airport_ID}" ;
+    rr:class aviation:Airport
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:ID ;
+    rr:objectMap [ 
+       rml:reference "Airport_ID";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:Name ;
+    rr:objectMap [ 
+       rml:reference "Name";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:City ;
+    rr:objectMap [ 
+       rml:reference "City";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:Country ;
+    rr:objectMap [ 
+       rml:reference "Country";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:IATA ;
+    rr:objectMap [ 
+       rml:reference "IATA";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:ICAO ;
+    rr:objectMap [ 
+       rml:reference "ICAO";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:Latitude ;
+    rr:objectMap [ 
+       rml:reference "Latitude";
+       rr:datatype xsd:float
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:Longitude ;
+    rr:objectMap [ 
+       rml:reference "Longitude";
+       rr:datatype xsd:float
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:Altitude ;
+    rr:objectMap [ 
+       rml:reference "Altitude";
+       rr:datatype xsd:integer
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:Timezone ;
+    rr:objectMap [ 
+       rml:reference "Timezone";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:DST ;
+    rr:objectMap [ 
+       rml:reference "DST";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate airport:TzDatabaseTimeZone ;
+    rr:objectMap [ 
+       rml:reference "Tz_database_time_zone";
+       rr:datatype xsd:string
+    ]
+  ].
+
+<#RouteMapping>
+  rml:logicalSource [
+    rml:source "datasources/routes.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://www.semantictecnologies.org/aviation/Route_{Source_airport}_{Destination_airport}_{Equipment}" ;
+    rr:class aviation:Route
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:Airline ;
+    rr:objectMap [ 
+       rml:reference "Airline";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:AirlineID ;
+    rr:objectMap [ 
+       rml:reference "Airline_ID";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:SourceAirport ;
+    rr:objectMap [ 
+       rml:reference "Source_airport";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:SourceAirportID ;
+    rr:objectMap [ 
+       rml:reference "Source_airport_ID";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:DestinationAirport ;
+    rr:objectMap [ 
+       rml:reference "Destination_airport";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:DestinationAirportID ;
+    rr:objectMap [ 
+       rml:reference "Destination_airport_ID";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:Codeshare ;
+    rr:objectMap [ 
+       rml:reference "Codeshare";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:Stops ;
+    rr:objectMap [ 
+       rml:reference "Stops";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate routes:Equipment ;
+    rr:objectMap [ 
+       rml:reference "Equipment";
+       rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate aviation:hasAirline ;
+    rr:objectMap [
+      rr:parentTriplesMap <#AirlineMapping> ;
+      rr:joinCondition [
+        rr:child "Airline_ID" ;
+        rr:parent "Airline_ID"
+      ]
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate aviation:hasSourceAirport ;
+    rr:objectMap [
+      rr:parentTriplesMap <#AirportMapping> ;
+      rr:joinCondition [
+        rr:child "Source_airport" ;
+        rr:parent "Airport_ID"
+      ]
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate aviation:hasDestinationAirport ;
+    rr:objectMap [
+      rr:parentTriplesMap <#AirportMapping> ;
+      rr:joinCondition [
+        rr:child "Destination_airport" ;
+        rr:parent "Airport_ID"
+      ]
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate aviation:hasEquipment ;
+    rr:objectMap [
+      rr:parentTriplesMap <#AirplaneMapping> ;
+      rr:joinCondition [
+        rr:child "Equipment" ;
+        rr:parent "IATA_code"
+      ]
+    ]
+  ] .

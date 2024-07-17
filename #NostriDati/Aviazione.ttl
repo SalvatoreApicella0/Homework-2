@@ -1,0 +1,227 @@
+@prefix : <http://www.semantictecnologies.org/aviation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semantictecnologies.org/aviation/> .
+
+<http://www.semantictecnologies.org/aviation> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semantictecnologies.org/aviation/hasAirline
+:hasAirline rdf:type owl:ObjectProperty ;
+            rdfs:domain :Route ;
+            rdfs:range :Airline .
+
+
+###  http://www.semantictecnologies.org/aviation/hasDestinationAirport
+:hasDestinationAirport rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Route ;
+                       rdfs:range :Airport .
+
+
+###  http://www.semantictecnologies.org/aviation/hasEquipment
+:hasEquipment rdf:type owl:ObjectProperty ;
+              rdfs:domain :Route ;
+              rdfs:range :Airplane .
+
+
+###  http://www.semantictecnologies.org/aviation/hasSourceAirport
+:hasSourceAirport rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Route ;
+                  rdfs:range :Airport .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semantictecnologies.org/aviation/Active
+:Active rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Airline ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/Airline
+:Airline rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Route ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/AirlineID
+:AirlineID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Route ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.semantictecnologies.org/aviation/Alias
+:Alias rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Airline ;
+       rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/Altitude
+:Altitude rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Airport ;
+          rdfs:range xsd:integer .
+
+
+###  http://www.semantictecnologies.org/aviation/Callsign
+:Callsign rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Airline ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/City
+:City rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Airport ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/Codeshare
+:Codeshare rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Route ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/Country
+:Country rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Airline ,
+                     :Airport ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/DST
+:DST rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Airport ;
+     rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/DestinationAirport
+:DestinationAirport rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Route ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/DestinationAirportID
+:DestinationAirportID rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Route ;
+                      rdfs:range xsd:integer .
+
+
+###  http://www.semantictecnologies.org/aviation/Equipment
+:Equipment rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Route ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/IATA
+:IATA rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Airline ,
+                  :Airplane ,
+                  :Airport ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/ICAO
+:ICAO rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Airline ,
+                  :Airplane ,
+                  :Airport ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/ID
+:ID rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Airline ,
+                :Airport ;
+    rdfs:range xsd:integer .
+
+
+###  http://www.semantictecnologies.org/aviation/Latitude
+:Latitude rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Airport ;
+          rdfs:range xsd:float .
+
+
+###  http://www.semantictecnologies.org/aviation/Longitude
+:Longitude rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Airport ;
+           rdfs:range xsd:float .
+
+
+###  http://www.semantictecnologies.org/aviation/Name
+:Name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Airline ,
+                  :Airplane ,
+                  :Airport ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/Source
+:Source rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Airport ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/SourceAirport
+:SourceAirport rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Route ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/SourceAirportID
+:SourceAirportID rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Route ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semantictecnologies.org/aviation/Stops
+:Stops rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Route ;
+       rdfs:range xsd:integer .
+
+
+###  http://www.semantictecnologies.org/aviation/Timezone
+:Timezone rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Airport ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/Type
+:Type rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Airport ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semantictecnologies.org/aviation/TzDatabaseTimeZone
+:TzDatabaseTimeZone rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Airport ;
+                    rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semantictecnologies.org/aviation/Airline
+:Airline rdf:type owl:Class .
+
+
+###  http://www.semantictecnologies.org/aviation/Airplane
+:Airplane rdf:type owl:Class .
+
+
+###  http://www.semantictecnologies.org/aviation/Airport
+:Airport rdf:type owl:Class .
+
+
+###  http://www.semantictecnologies.org/aviation/Route
+:Route rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
